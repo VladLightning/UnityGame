@@ -3,27 +3,27 @@ using UnityEngine;
 public class Coins : MonoBehaviour
 {
     private int _amount;
-    private int _coinsIncrease;
+    private int _coinsIncrement;
 
     public Coins(int amount, int coinsIncrease)
     {
         _amount = amount;
-        _coinsIncrease = coinsIncrease;
+        _coinsIncrement = coinsIncrease;
     }
 
     public void AddCoins()
     {
-        _amount += _coinsIncrease;
+        _amount += _coinsIncrement;
     }
 
-    public void AddIncrease()
+    public void IncreaseIncrement()
     {
-        _coinsIncrease++;
+        _coinsIncrement++;
     }
     
-    public void RemoveCoins()
+    public void Purchase(int price)
     {
-        _amount = 0;
+        _amount -= price;
     }
 
     public int Amount

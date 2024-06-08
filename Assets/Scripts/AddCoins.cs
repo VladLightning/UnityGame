@@ -16,4 +16,12 @@ public class AddCoins : MonoBehaviour
         _coins.AddCoins();
         _coinsDisplay.text = _coins.Amount.ToString();
     }
+
+    public Coins Coins
+    {
+        get 
+        { 
+            return _coins;
+        }
+    }
 }
