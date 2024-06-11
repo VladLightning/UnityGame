@@ -1,6 +1,5 @@
-using UnityEngine;
 
-public class Coins : MonoBehaviour
+public class Coins 
 {
     private int _amount;
     private int _coinsIncrement;
