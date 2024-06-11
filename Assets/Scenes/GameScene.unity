@@ -177,7 +177,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Reduce cooldown
+  m_text: Reduce click cooldown
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1013,6 +1013,7 @@ GameObject:
   - component: {fileID: 681515194}
   - component: {fileID: 681515193}
   - component: {fileID: 681515192}
+  - component: {fileID: 681515195}
   m_Layer: 5
   m_Name: MisfortuneFrequency
   m_TagString: Untagged
@@ -1122,6 +1123,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681515190}
   m_CullTransparentMesh: 1
+--- !u!114 &681515195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681515190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b556a5e85f133943b81988b6b56fb56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 1500
+  _priceIncreaseIndex: 3
 --- !u!1 &686083425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1268,6 +1283,7 @@ GameObject:
   - component: {fileID: 718025650}
   - component: {fileID: 718025649}
   - component: {fileID: 718025648}
+  - component: {fileID: 718025651}
   m_Layer: 5
   m_Name: Coins
   m_TagString: Untagged
@@ -1338,7 +1354,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 718025649}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 718871401}
+        m_TargetAssemblyTypeName: UpgradeBuy, Assembly-CSharp
+        m_MethodName: BuyIncrementIncrease
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 718025651}
+        m_TargetAssemblyTypeName: UpgradePrice, Assembly-CSharp
+        m_MethodName: IncreasePrice
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &718025649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1377,6 +1417,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 718025646}
   m_CullTransparentMesh: 1
+--- !u!114 &718025651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718025646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b556a5e85f133943b81988b6b56fb56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 10
+  _priceIncreaseIndex: 0.1
 --- !u!1 &718871394
 GameObject:
   m_ObjectHideFlags: 0
@@ -1390,6 +1444,8 @@ GameObject:
   - component: {fileID: 718871397}
   - component: {fileID: 718871396}
   - component: {fileID: 718871399}
+  - component: {fileID: 718871400}
+  - component: {fileID: 718871401}
   m_Layer: 5
   m_Name: Clicker
   m_TagString: Untagged
@@ -1473,6 +1529,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 718871400}
+        m_TargetAssemblyTypeName: ClickCooldown, Assembly-CSharp
+        m_MethodName: StartCooldown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &718871397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1494,10 +1562,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: -3338749442709606003, guid: b7a3958cdb895cc4cbb3aafd1e60ecac, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -1524,6 +1592,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coinsDisplay: {fileID: 1331666299}
+  _coins: {fileID: 0}
+--- !u!114 &718871400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718871394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 391956da0bcf336498e5d7857f22a90d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cooldownTime: 1
+--- !u!114 &718871401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718871394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb828d1fb692cf548b000a5312e4b827, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1158783143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1536,6 +1630,7 @@ GameObject:
   - component: {fileID: 1158783147}
   - component: {fileID: 1158783146}
   - component: {fileID: 1158783145}
+  - component: {fileID: 1158783148}
   m_Layer: 5
   m_Name: Cooldown
   m_TagString: Untagged
@@ -1645,6 +1740,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1158783143}
   m_CullTransparentMesh: 1
+--- !u!114 &1158783148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158783143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b556a5e85f133943b81988b6b56fb56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 150
+  _priceIncreaseIndex: 2
 --- !u!1 &1331666297
 GameObject:
   m_ObjectHideFlags: 0
@@ -2308,6 +2417,7 @@ GameObject:
   - component: {fileID: 2129131090}
   - component: {fileID: 2129131089}
   - component: {fileID: 2129131088}
+  - component: {fileID: 2129131091}
   m_Layer: 5
   m_Name: FortuneUpgrade
   m_TagString: Untagged
@@ -2417,6 +2527,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2129131086}
   m_CullTransparentMesh: 1
+--- !u!114 &2129131091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129131086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b556a5e85f133943b81988b6b56fb56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 1500
+  _priceIncreaseIndex: 3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

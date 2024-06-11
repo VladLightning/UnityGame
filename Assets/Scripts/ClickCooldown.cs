@@ -38,4 +38,9 @@ public class ClickCooldown : MonoBehaviour
 
         _button.interactable = true;
     }
+
+    public void ReduceCooldown()
+    {
+        _cooldownTime -= 0.1f;
+    }
 }
