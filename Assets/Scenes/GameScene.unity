@@ -1135,8 +1135,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b556a5e85f133943b81988b6b56fb56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _upgradeBuy: {fileID: 718871401}
   _price: 1500
   _priceIncreaseIndex: 3
+  _upgradeName: 
 --- !u!1 &686083425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1355,21 +1357,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 718871401}
-        m_TargetAssemblyTypeName: UpgradeBuy, Assembly-CSharp
-        m_MethodName: BuyIncrementIncrease
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 718025651}
-        m_TargetAssemblyTypeName: UpgradePrice, Assembly-CSharp
-        m_MethodName: IncreasePrice
+        m_TargetAssemblyTypeName: UpgradeInfo, Assembly-CSharp
+        m_MethodName: BuyUpgrade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1429,8 +1419,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b556a5e85f133943b81988b6b56fb56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _upgradeBuy: {fileID: 718871401}
   _price: 10
   _priceIncreaseIndex: 0.1
+  _upgradeName: Increment
 --- !u!1 &718871394
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,20 +1707,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1158783148}
-        m_TargetAssemblyTypeName: UpgradePrice, Assembly-CSharp
-        m_MethodName: IncreasePrice
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 718871401}
-        m_TargetAssemblyTypeName: UpgradeBuy, Assembly-CSharp
-        m_MethodName: BuyCooldownDecrease
+        m_TargetAssemblyTypeName: UpgradeInfo, Assembly-CSharp
+        m_MethodName: BuyUpgrade
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1788,8 +1768,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b556a5e85f133943b81988b6b56fb56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _upgradeBuy: {fileID: 718871401}
   _price: 150
   _priceIncreaseIndex: 2
+  _upgradeName: Cooldown
 --- !u!114 &1158783149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2588,8 +2570,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b556a5e85f133943b81988b6b56fb56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _upgradeBuy: {fileID: 718871401}
   _price: 1500
   _priceIncreaseIndex: 3
+  _upgradeName: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
