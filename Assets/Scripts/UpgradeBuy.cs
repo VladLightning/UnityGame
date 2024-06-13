@@ -2,25 +2,46 @@ using UnityEngine;
 
 public class UpgradeBuy : MonoBehaviour
 {
-    private Coins _coins;
+    private ManageCoins _manageCoins;
     private ClickCooldown _clickCooldown;
     private Upgrades _upgrades;
 
     private void Start()
     {
-        _coins = GetComponent<AddCoins>().Coins;
+        _manageCoins = GetComponent<ManageCoins>();
         _clickCooldown = GetComponent<ClickCooldown>();
 
-        _upgrades = new Upgrades(_coins, _clickCooldown);
+        _upgrades = new Upgrades(_manageCoins.Coins, _clickCooldown);
     }
 
-    public void BuyIncrementIncrease()
+    public void Buy(int price, string name, UpgradeInfo upgradeInfo)
     {
-        _upgrades.UpgradeCoinsIncrement();
-    }
+        if(price > _manageCoins.Coins.Amount)
+        {
+            Debug.Log("Not enough money");
+            return;
+        }
+        
 
-    public void BuyCooldownDecrease()
-    {
-        _upgrades.UpgradeClickCooldown();
+        switch (name)
+        {
+            case "Increment":
+
+                _manageCoins.DecreaseAmount(price);
+                _upgrades.UpgradeCoinsIncrement();
+
+                upgradeInfo.IncreasePrice();
+
+                break;
+
+            case "Cooldown":
+
+                _manageCoins.DecreaseAmount(price);
+                _upgrades.UpgradeClickCooldown();
+
+                upgradeInfo.IncreasePrice();
+
+                break;
+        }
     }
 }

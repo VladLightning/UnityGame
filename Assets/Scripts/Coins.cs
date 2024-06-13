@@ -17,7 +17,7 @@ public class Coins
 
     public void IncreaseIncrement()
     {
-        _coinsIncrement++;
+        _coinsIncrement += (int)(_coinsIncrement * 0.1f) + 1;
     }
     
     public void Purchase(int price)
