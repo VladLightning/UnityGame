@@ -8,7 +8,7 @@ public class ManageCoins : MonoBehaviour
 
     private void Start()
     {
-        _coins = new Coins(0,1);
+        _coins = new Coins();
     }
 
     public void IncreaseAmount()

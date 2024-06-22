@@ -2,13 +2,7 @@
 public class Coins 
 {
     private int _amount;
-    private int _coinsIncrement;
-
-    public Coins(int amount, int coinsIncrease)
-    {
-        _amount = amount;
-        _coinsIncrement = coinsIncrease;
-    }
+    private int _coinsIncrement = 1;
 
     public void AddCoins()
     {
