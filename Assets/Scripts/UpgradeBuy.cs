@@ -14,7 +14,7 @@ public class UpgradeBuy : MonoBehaviour
         _upgrades = new Upgrades(_manageCoins.Coins, _clickCooldown);
     }
 
-    public void Buy(int price, string name, UpgradeInfo upgradeInfo)
+    public void Buy(int price, UpgradeNamesEnum.UpgradeNames name, UpgradeInfo upgradeInfo)
     {
         if(price > _manageCoins.Coins.Amount)
         {
@@ -25,7 +25,7 @@ public class UpgradeBuy : MonoBehaviour
 
         switch (name)
         {
-            case "Increment":
+            case UpgradeNamesEnum.UpgradeNames.Increment:
 
                 _manageCoins.DecreaseAmount(price);
                 _upgrades.UpgradeCoinsIncrement();
@@ -34,7 +34,7 @@ public class UpgradeBuy : MonoBehaviour
 
                 break;
 
-            case "Cooldown":
+            case UpgradeNamesEnum.UpgradeNames.Cooldown:
 
                 _manageCoins.DecreaseAmount(price);
                 _upgrades.UpgradeClickCooldown();

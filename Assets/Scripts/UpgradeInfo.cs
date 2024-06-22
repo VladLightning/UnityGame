@@ -3,11 +3,10 @@ using UnityEngine;
 public class UpgradeInfo : MonoBehaviour
 {
     [SerializeField] private UpgradeBuy _upgradeBuy;
-
     [SerializeField] private int _price;
     [SerializeField] private float _priceIncreaseIndex;
 
-    [SerializeField] private string _upgradeName;
+    [SerializeField] private UpgradeNamesEnum.UpgradeNames _upgradeName;
 
     public void BuyUpgrade()
     {
@@ -21,9 +20,6 @@ public class UpgradeInfo : MonoBehaviour
 
     public int Price
     {
-        get 
-        {
-            return _price; 
-        }
+        get { return _price; }
     }
 }

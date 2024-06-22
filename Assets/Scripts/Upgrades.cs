@@ -1,8 +1,9 @@
 
 public class Upgrades 
 {
-    private Coins _coins;
-    private ClickCooldown _clickCooldown;
+    private const float COOLDOWN_DECREASE = 0.1f;
+    private readonly Coins _coins;
+    private readonly ClickCooldown _clickCooldown;
 
     public Upgrades(Coins coins, ClickCooldown clickCooldown)
     {
@@ -17,6 +18,6 @@ public class Upgrades
 
     public void UpgradeClickCooldown()
     {
-        _clickCooldown.ReduceCooldown();
+        _clickCooldown.CooldownTime -= COOLDOWN_DECREASE;
     }
 }
