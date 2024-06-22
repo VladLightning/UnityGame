@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class ClickCooldown : MonoBehaviour
 {
+    public const float FILL_AMOUNT = 0.025f;
+    public const float DELAY_MODIFIER = 40;
+
     [SerializeField] private float _cooldownTime;
 
     private Button _button;
@@ -17,30 +20,29 @@ public class ClickCooldown : MonoBehaviour
 
     public void StartCooldown()
     {
-        StartCoroutine(Cooldown());
+        if (_cooldownTime > 0.1f)
+        {
+            StartCoroutine(Cooldown());
+        }
     }
 
     private IEnumerator Cooldown()
     {
-        if (_cooldownTime < 0.1f)
-        {
-            yield break; 
-        }
-
         _button.interactable = false;
         _image.fillAmount = 0;
 
         while(_image.fillAmount < 1)
         {
-            _image.fillAmount += 0.025f;
-            yield return new WaitForSeconds(_cooldownTime/40);
+            _image.fillAmount += FILL_AMOUNT;
+            yield return new WaitForSeconds(_cooldownTime/DELAY_MODIFIER);
         }
 
         _button.interactable = true;
     }
 
-    public void ReduceCooldown()
+    public float CooldownTime
     {
-        _cooldownTime -= 0.1f;
+        set { _cooldownTime = value;} 
+        get { return _cooldownTime; }
     }
 }
