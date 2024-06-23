@@ -13,7 +13,7 @@ public class UpgradeBuy : MonoBehaviour
 
         _upgrades = new Upgrades(_manageCoins.Coins, _clickCooldown);
     }
-
+    
     public void Buy(int price, UpgradeNamesEnum.UpgradeNames name, UpgradeInfo upgradeInfo)
     {
         if(price > _manageCoins.Coins.Amount)
