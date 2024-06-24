@@ -18,7 +18,6 @@ public class UpgradeBuy : MonoBehaviour
     {
         if(price > _manageCoins.Coins.Amount)
         {
-            Debug.Log("Not enough money");
             return;
         }
         
