@@ -9,7 +9,7 @@ public class UpgradeLimit : ButtonClickLimit
         _clicksAmount++;
         if (_clicksAmount >= _clickLimit)
         {
-            _button.interactable = false;
+            _button.gameObject.SetActive(false);
             _button.GetComponent<UpgradeInfo>().UpdatePriceDisplay(MAX_UPGRADE);
         }
     }
