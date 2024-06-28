@@ -14,12 +14,17 @@ public class ButtonClickLimit : MonoBehaviour
         _button = GetComponent<Button>();
     }
 
-    public virtual void IncreaseClicksAmount()
+    public void IncreaseClicksAmount()
     {
         _clicksAmount++;
         if( _clicksAmount >= _clickLimit)
         {
-            _button.interactable = false;           
+            ReachClickLimit();           
         }
+    }
+
+    protected virtual void ReachClickLimit()
+    {
+        _button.interactable = false;
     }
 }
