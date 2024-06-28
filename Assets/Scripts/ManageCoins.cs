@@ -1,4 +1,3 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,31 +17,23 @@ public class ManageCoins : MonoBehaviour
     {
         _coins.AddCoins();
         _coinsDisplay.text = _coins.Amount.ToString();
-        StartCoroutine(CheckAvailableUpgrades());
+        CheckAvailableUpgrades();
     }
 
     public void DecreaseAmount(int amount)
     {
         _coins.Purchase(amount);
         _coinsDisplay.text = _coins.Amount.ToString();
-        StartCoroutine(CheckAvailableUpgrades());
+        CheckAvailableUpgrades();
     }
 
-    private IEnumerator CheckAvailableUpgrades()
+    private void CheckAvailableUpgrades()
     {
-        yield return new WaitForEndOfFrame();
         for(int i = 0; i < _upgradeButtons.Length; i++)
         {
             var upgradeInfo = _upgradeButtons[i].GetComponent<UpgradeInfo>();
 
-            if (upgradeInfo.Price <= _coins.Amount)
-            {
-                _upgradeButtons[i].interactable = true;
-            }
-            else if(upgradeInfo.Price > _coins.Amount && _upgradeButtons[i].interactable == true)
-            {
-                _upgradeButtons[i].interactable = false;
-            }
+            _upgradeButtons[i].interactable = upgradeInfo.Price <= _coins.Amount;
         }
     }
 
