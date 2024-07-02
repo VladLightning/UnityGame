@@ -1,11 +1,11 @@
+using NUnit.Framework;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class FortuneButtonController : MonoBehaviour
 {
-    private const float X_RESTRICTION = 100;
-    private const float Y_RESTRICTION = 200;
+    private const float BORDER_PERCENTAGE = 0.1f;
 
     private const float INCREASE_MULTIPLIER = 0.25f;
     private const float INCREASE_DURATION = 0.1f;
@@ -19,6 +19,9 @@ public class FortuneButtonController : MonoBehaviour
 
     [SerializeField] private float _incrementMultiplier;
     [SerializeField] private float _multiplierDuration;
+
+    private float _borderRestrictionX;
+    private float _borderRestrictionY;
 
     private IEnumerator _activate;
     private IEnumerator _deactivate;
@@ -46,11 +49,19 @@ public class FortuneButtonController : MonoBehaviour
         Deactivate();
     }
 
+    private void SetScreenBorders()
+    {
+        _borderRestrictionX = Screen.currentResolution.width * BORDER_PERCENTAGE;
+        _borderRestrictionY = Screen.currentResolution.height * BORDER_PERCENTAGE;
+    }
+
     private void RandomizePosition()
     {
+        SetScreenBorders();
+
         _fortuneButton.transform.position = (Vector2)_camera.ScreenToWorldPoint(
-        new Vector2(Random.Range(X_RESTRICTION, Screen.currentResolution.width - X_RESTRICTION), 
-                    Random.Range(Y_RESTRICTION, Screen.currentResolution.height - Y_RESTRICTION)));
+        new Vector2(Random.Range(_borderRestrictionX, Screen.currentResolution.width - _borderRestrictionX), 
+                    Random.Range(_borderRestrictionY, Screen.currentResolution.height - _borderRestrictionY)));
     }
 
     private void Activate()
