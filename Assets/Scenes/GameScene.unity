@@ -1411,6 +1411,7 @@ GameObject:
   - component: {fileID: 681515193}
   - component: {fileID: 681515192}
   - component: {fileID: 681515195}
+  - component: {fileID: 681515196}
   m_Layer: 5
   m_Name: MisfortuneFrequency
   m_TagString: Untagged
@@ -1433,9 +1434,9 @@ RectTransform:
   - {fileID: 1427154390}
   m_Father: {fileID: 1834937325}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1680, y: -930}
   m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &681515192
@@ -1481,7 +1482,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 681515193}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 681515196}
+        m_TargetAssemblyTypeName: DoTweenButtonClick, Assembly-CSharp
+        m_MethodName: CallOnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &681515193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1537,6 +1550,20 @@ MonoBehaviour:
   _upgradeBuy: {fileID: 718871401}
   _upgradeName: 3
   _priceDisplay: {fileID: 1941833109}
+--- !u!114 &681515196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681515190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ebdb93fdf8f03745b246260912330a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetScale: 0.9
+  _defaultScale: 1
 --- !u!1 &686083425
 GameObject:
   m_ObjectHideFlags: 0
@@ -1684,6 +1711,7 @@ GameObject:
   - component: {fileID: 718025649}
   - component: {fileID: 718025648}
   - component: {fileID: 718025651}
+  - component: {fileID: 718025652}
   m_Layer: 5
   m_Name: Coins
   m_TagString: Untagged
@@ -1706,9 +1734,9 @@ RectTransform:
   - {fileID: 1882376611}
   m_Father: {fileID: 1834937325}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 240, y: -930}
   m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &718025648
@@ -1755,6 +1783,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 718025652}
+        m_TargetAssemblyTypeName: DoTweenButtonClick, Assembly-CSharp
+        m_MethodName: CallOnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 718025651}
         m_TargetAssemblyTypeName: UpgradeInfo, Assembly-CSharp
         m_MethodName: BuyUpgrade
@@ -1822,6 +1862,20 @@ MonoBehaviour:
   _upgradeBuy: {fileID: 718871401}
   _upgradeName: 0
   _priceDisplay: {fileID: 1081891605}
+--- !u!114 &718025652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718025646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ebdb93fdf8f03745b246260912330a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetScale: 0.9
+  _defaultScale: 1
 --- !u!1 &718871394
 GameObject:
   m_ObjectHideFlags: 0
@@ -1837,6 +1891,7 @@ GameObject:
   - component: {fileID: 718871399}
   - component: {fileID: 718871400}
   - component: {fileID: 718871401}
+  - component: {fileID: 718871402}
   m_Layer: 5
   m_Name: Clicker
   m_TagString: Untagged
@@ -1908,6 +1963,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 718871402}
+        m_TargetAssemblyTypeName: DoTweenButtonClick, Assembly-CSharp
+        m_MethodName: CallOnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 718871399}
         m_TargetAssemblyTypeName: AddCoins, Assembly-CSharp
         m_MethodName: IncreaseAmount
@@ -2014,6 +2081,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fortuneButtonController: {fileID: 89843378}
+--- !u!114 &718871402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718871394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ebdb93fdf8f03745b246260912330a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetScale: 0.8
+  _defaultScale: 1
 --- !u!1 &1081891603
 GameObject:
   m_ObjectHideFlags: 0
@@ -2162,6 +2243,7 @@ GameObject:
   - component: {fileID: 1158783145}
   - component: {fileID: 1158783148}
   - component: {fileID: 1158783149}
+  - component: {fileID: 1158783150}
   m_Layer: 5
   m_Name: Cooldown
   m_TagString: Untagged
@@ -2184,9 +2266,9 @@ RectTransform:
   - {fileID: 67462128}
   m_Father: {fileID: 1834937325}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 720, y: -930}
   m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1158783145
@@ -2233,6 +2315,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1158783150}
+        m_TargetAssemblyTypeName: DoTweenButtonClick, Assembly-CSharp
+        m_MethodName: CallOnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1158783148}
         m_TargetAssemblyTypeName: UpgradeInfo, Assembly-CSharp
         m_MethodName: BuyUpgrade
@@ -2325,6 +2419,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clickLimit: 9
+--- !u!114 &1158783150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158783143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ebdb93fdf8f03745b246260912330a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetScale: 0.9
+  _defaultScale: 1
 --- !u!1 &1331666297
 GameObject:
   m_ObjectHideFlags: 0
@@ -2359,7 +2467,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -440, y: 315}
+  m_AnchoredPosition: {x: -430, y: 315}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1331666299
@@ -2912,7 +3020,6 @@ GameObject:
   - component: {fileID: 1834937325}
   - component: {fileID: 1834937328}
   - component: {fileID: 1834937327}
-  - component: {fileID: 1834937326}
   m_Layer: 5
   m_Name: Upgrades
   m_TagString: Untagged
@@ -2943,32 +3050,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 570}
   m_SizeDelta: {x: 1920, y: 1020}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1834937326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1834937324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 7
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!114 &1834937327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3498,6 +3579,7 @@ GameObject:
   - component: {fileID: 2129131088}
   - component: {fileID: 2129131091}
   - component: {fileID: 2129131092}
+  - component: {fileID: 2129131093}
   m_Layer: 5
   m_Name: FortuneUpgrade
   m_TagString: Untagged
@@ -3520,9 +3602,9 @@ RectTransform:
   - {fileID: 519460867}
   m_Father: {fileID: 1834937325}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1200, y: -930}
   m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2129131088
@@ -3569,9 +3651,33 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2129131093}
+        m_TargetAssemblyTypeName: DoTweenButtonClick, Assembly-CSharp
+        m_MethodName: CallOnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 2129131091}
         m_TargetAssemblyTypeName: UpgradeInfo, Assembly-CSharp
         m_MethodName: BuyUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2129131092}
+        m_TargetAssemblyTypeName: ButtonClickLimit, Assembly-CSharp
+        m_MethodName: IncreaseClicksAmount
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3649,6 +3755,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _clickLimit: 6
+--- !u!114 &2129131093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129131086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ebdb93fdf8f03745b246260912330a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetScale: 0.9
+  _defaultScale: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
