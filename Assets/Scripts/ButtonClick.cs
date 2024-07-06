@@ -5,11 +5,11 @@ public class ButtonClick : MonoBehaviour
 {
     [SerializeField] private float _targetScale;
 
-    private DoTweenUIAnimtaion _doTweenUIAnimation;
+    private DoTweenUIAnimation _doTweenUIAnimation;
 
     private void Start()
     {
-        _doTweenUIAnimation = new DoTweenUIAnimtaion(GetComponent<Image>(), _targetScale);
+        _doTweenUIAnimation = new DoTweenUIAnimation(GetComponent<Image>(), _targetScale);
     }
 
     public void OnClick()
