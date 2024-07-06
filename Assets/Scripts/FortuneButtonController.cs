@@ -1,7 +1,5 @@
-using NUnit.Framework;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class FortuneButtonController : MonoBehaviour
 {
@@ -23,14 +21,13 @@ public class FortuneButtonController : MonoBehaviour
     private float _borderRestrictionX;
     private float _borderRestrictionY;
 
-    private IEnumerator _activate;
     private IEnumerator _deactivate;
 
     private void Start()
     {
-        _activate = ActivateTimer();
         _deactivate = DeactivateTimer();
-        StartCoroutine(_activate);
+        StartCoroutine(ActivateTimer());
+        SetScreenBorders();
     }
 
     public void IncreaseMultiplier()
@@ -57,8 +54,6 @@ public class FortuneButtonController : MonoBehaviour
 
     private void RandomizePosition()
     {
-        SetScreenBorders();
-
         _fortuneButton.transform.position = (Vector2)_camera.ScreenToWorldPoint(
         new Vector2(Random.Range(_borderRestrictionX, Screen.currentResolution.width - _borderRestrictionX), 
                     Random.Range(_borderRestrictionY, Screen.currentResolution.height - _borderRestrictionY)));
@@ -70,8 +65,6 @@ public class FortuneButtonController : MonoBehaviour
 
         _fortuneButton.SetActive(true);
         StartCoroutine(_deactivate);
-
-        _activate = ActivateTimer();
     }
 
     private void Deactivate()
@@ -79,7 +72,7 @@ public class FortuneButtonController : MonoBehaviour
         StopCoroutine(_deactivate);
 
         _fortuneButton.SetActive(false);
-        StartCoroutine(_activate);
+        StartCoroutine(ActivateTimer());
 
         _deactivate = DeactivateTimer();
     }
