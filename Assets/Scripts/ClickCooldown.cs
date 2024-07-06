@@ -12,6 +12,8 @@ public class ClickCooldown : MonoBehaviour
     private Button _button;
     private Image _image;
 
+    public float CooldownTime { set { _cooldownTime = value; } get { return _cooldownTime; }  }
+
     private void Start()
     {
         _button = GetComponent<Button>();
@@ -30,19 +32,12 @@ public class ClickCooldown : MonoBehaviour
     {
         _button.interactable = false;
         _image.fillAmount = 0;
-
-        while(_image.fillAmount < 1)
+        while (_image.fillAmount < 1)
         {
             _image.fillAmount += FILL_AMOUNT;
             yield return new WaitForSeconds(_cooldownTime/DELAY_MODIFIER);
         }
 
         _button.interactable = true;
-    }
-
-    public float CooldownTime
-    {
-        set { _cooldownTime = value;} 
-        get { return _cooldownTime; }
     }
 }

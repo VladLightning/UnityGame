@@ -12,6 +12,8 @@ public class UpgradeInfo : MonoBehaviour
 
     [SerializeField] private TMP_Text _priceDisplay;
 
+    public int Price { get { return _price; } }
+
     private void Start()
     {
         UpdatePriceDisplay();
@@ -36,10 +38,5 @@ public class UpgradeInfo : MonoBehaviour
     public void UpdatePriceDisplay(string text)
     {
         _priceDisplay.text = text;
-    }
-
-    public int Price
-    {
-        get { return _price; }
     }
 }
