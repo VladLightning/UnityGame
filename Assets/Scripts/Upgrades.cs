@@ -5,12 +5,14 @@ public class Upgrades
     private readonly Coins _coins;
     private readonly ClickCooldown _clickCooldown;
     private readonly FortuneButtonController _fortuneButtonController;
+    private readonly MisfortuneButtonController _misfortuneButtonController;
 
-    public Upgrades(Coins coins, ClickCooldown clickCooldown, FortuneButtonController fortuneButtonController)
+    public Upgrades(Coins coins, ClickCooldown clickCooldown, FortuneButtonController fortuneButtonController, MisfortuneButtonController misfortuneButtonController)
     {
         _coins = coins;
         _clickCooldown = clickCooldown;
         _fortuneButtonController = fortuneButtonController;
+        _misfortuneButtonController = misfortuneButtonController;
     }
 
     public void UpgradeCoinsIncrement()
@@ -27,5 +29,11 @@ public class Upgrades
     {
         _fortuneButtonController.IncreaseDuration();
         _fortuneButtonController.IncreaseMultiplier();
+    }
+
+    public void UpgradeMisfortune()
+    {
+        _misfortuneButtonController.IncreaseActivationDelay();
+        _misfortuneButtonController.DecreaseCoinsLost();
     }
 }

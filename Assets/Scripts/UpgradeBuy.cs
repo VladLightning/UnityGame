@@ -3,6 +3,7 @@ using UnityEngine;
 public class UpgradeBuy : MonoBehaviour
 {
     [SerializeField] private FortuneButtonController _fortuneButtonController;
+    [SerializeField] private MisfortuneButtonController _misfortuneButtonController;
     private ManageCoins _manageCoins;
     private ClickCooldown _clickCooldown;
     private Upgrades _upgrades;
@@ -12,7 +13,7 @@ public class UpgradeBuy : MonoBehaviour
         _manageCoins = GetComponent<ManageCoins>();
         _clickCooldown = GetComponent<ClickCooldown>();
 
-        _upgrades = new Upgrades(_manageCoins.Coins, _clickCooldown, _fortuneButtonController);
+        _upgrades = new Upgrades(_manageCoins.Coins, _clickCooldown, _fortuneButtonController, _misfortuneButtonController);
     }
     
     public void Buy(int price, UpgradeNamesEnum.UpgradeNames name, UpgradeInfo upgradeInfo)
@@ -33,7 +34,7 @@ public class UpgradeBuy : MonoBehaviour
 
             case UpgradeNamesEnum.UpgradeNames.Fortune: _upgrades.UpgradeFortune(); break;
 
-            case UpgradeNamesEnum.UpgradeNames.Misfortune: break;
+            case UpgradeNamesEnum.UpgradeNames.Misfortune: _upgrades.UpgradeMisfortune(); break;
         }
     }
 }

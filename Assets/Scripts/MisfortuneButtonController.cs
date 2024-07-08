@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class MisfortuneButtonController : MonoBehaviour
 {
+    private const float DELAY_INCREASE = 5;
+    private const float COEFFICIENT_DECREASE = 0.2f;
+
     [SerializeField] private GameObject _misfortuneButton;
     [SerializeField] private ManageCoins _manageCoins;
 
@@ -17,6 +20,21 @@ public class MisfortuneButtonController : MonoBehaviour
     {
         _deactivate = DeactivateTimer();
         StartCoroutine(ActivateTimer());
+    }
+
+    public void IncreaseActivationDelay()
+    {
+        _activationDelay += DELAY_INCREASE;
+    }
+
+    public void DecreaseCoinsLost()
+    {
+        _coefficientOfCoinsLost -= COEFFICIENT_DECREASE;
+        if(_coefficientOfCoinsLost < 0.2f)
+        {
+            StopAllCoroutines();
+            Destroy(gameObject);
+        }
     }
 
     public void OnClick()
