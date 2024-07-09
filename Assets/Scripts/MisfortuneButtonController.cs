@@ -4,13 +4,16 @@ using UnityEngine;
 public class MisfortuneButtonController : MonoBehaviour
 {
     private const float DELAY_INCREASE = 5;
+    private const float WARNING_TIME_INCREASE = 0.75f;
     private const float COEFFICIENT_DECREASE = 0.2f;
 
     [SerializeField] private GameObject _misfortuneButton;
+    [SerializeField] private GameObject _warningSign;
     [SerializeField] private ManageCoins _manageCoins;
 
     [SerializeField] private float _activationDelay;
     [SerializeField] private float _deactivationDelay;
+    [SerializeField] private float _warningTime;
 
     [SerializeField] private float _coefficientOfCoinsLost;
 
@@ -25,6 +28,11 @@ public class MisfortuneButtonController : MonoBehaviour
     public void IncreaseActivationDelay()
     {
         _activationDelay += DELAY_INCREASE;
+    }
+
+    public void IncreaseWarningTime()
+    {
+        _warningTime += WARNING_TIME_INCREASE;
     }
 
     public void DecreaseCoinsLost()
@@ -59,8 +67,17 @@ public class MisfortuneButtonController : MonoBehaviour
         _deactivate = DeactivateTimer();
     }
 
+    private IEnumerator WarningTimer()
+    {
+        yield return new WaitForSeconds(_activationDelay - _warningTime);
+        _warningSign.SetActive(true);
+        yield return new WaitForSeconds(_warningTime);
+        _warningSign.SetActive(false);
+    }
+
     private IEnumerator ActivateTimer()
     {
+        StartCoroutine(WarningTimer());
         yield return new WaitForSeconds(_activationDelay);
         Activate();
     }

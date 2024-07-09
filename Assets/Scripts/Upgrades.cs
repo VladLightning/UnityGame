@@ -34,6 +34,7 @@ public class Upgrades
     public void UpgradeMisfortune()
     {
         _misfortuneButtonController.IncreaseActivationDelay();
+        _misfortuneButtonController.IncreaseWarningTime();
         _misfortuneButtonController.DecreaseCoinsLost();
     }
 }
