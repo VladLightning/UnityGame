@@ -5,70 +5,66 @@ using UnityEngine.UI;
 
 public class DoTweenUIAnimation
 {
-    private const int DELAY = 100;
-    private const float ANIMATION_TIME = 0.1f;
-
-    private readonly Vector3 _defaultDisplayPosition;
-    private readonly Graphic _objectToAnimate;
-
-    private readonly float _defaultScale;
-    private readonly float _targetScale;
+    private const int ANIMATION_TIME_MODIFIER = 1000;
 
     private bool _isAnimationPlaying;
 
-    public DoTweenUIAnimation(Graphic objectToAnimate)
-    {
-        _defaultDisplayPosition = objectToAnimate.transform.position;
-        _objectToAnimate = objectToAnimate;
-    }
-
-    public DoTweenUIAnimation(Graphic objectToAnimate, float targetScale)
-    {
-        _objectToAnimate = objectToAnimate;
-        _defaultScale = objectToAnimate.transform.localScale.x;
-        _targetScale = targetScale;
-    }
-
-    public void StartAnimateText()
+    public void StartAnimateText(Graphic objectToAnimate, Vector3 defaultPosition, float animationTime)
     {       
         if (!_isAnimationPlaying)
         {
-            AnimateText();
+            AnimateText(objectToAnimate, defaultPosition, animationTime);
         }
     }
 
-    private async void AnimateText()
+    private async void AnimateText(Graphic objectToAnimate, Vector3 defaultPosition, float animationTime)
     {
         _isAnimationPlaying = true;
-        _objectToAnimate.transform.DOMove(_defaultDisplayPosition + Vector3.up, ANIMATION_TIME);
+        objectToAnimate.transform.DOMove(defaultPosition + Vector3.up, animationTime);
 
-        await Task.Delay(DELAY);
+        await Task.Delay((int)(animationTime * ANIMATION_TIME_MODIFIER));
 
-        _objectToAnimate.transform.DOMove(_defaultDisplayPosition, ANIMATION_TIME);
+        objectToAnimate.transform.DOMove(defaultPosition, animationTime);
         _isAnimationPlaying = false;
     }
 
-    public void StartAnimateButton()
+    public void StartAnimateButton(Graphic objectToAnimate, float defaultScale, float targetScale, float animationTime)
     {
         if (!_isAnimationPlaying)
         {
-            AnimateButton();
+            AnimateButton(objectToAnimate, defaultScale, targetScale, animationTime);
         }
     }
 
-    private async void AnimateButton()
+    private async void AnimateButton(Graphic objectToAnimate, float defaultScale, float targetScale, float animationTime)
     {
         _isAnimationPlaying = true;
-        _objectToAnimate.transform.DOScale(_targetScale, ANIMATION_TIME);
+        objectToAnimate.transform.DOScale(targetScale, animationTime);
 
-        await Task.Delay(DELAY);
+        await Task.Delay((int)(animationTime * ANIMATION_TIME_MODIFIER));
 
-        _objectToAnimate.transform.DOScale(_defaultScale, ANIMATION_TIME);
+        objectToAnimate.transform.DOScale(defaultScale, animationTime);
         _isAnimationPlaying = false;
     }
 
-    public void KillTween()
+    public void StartFade(Graphic objectToAnimate, float minValue, float maxValue, float animationTime)
     {
-        DOTween.Kill(_objectToAnimate.transform);
+        Fade(objectToAnimate, minValue, maxValue, animationTime);
+    }
+
+    private async void Fade(Graphic objectToAnimate, float minValue, float maxValue, float animationTime)
+    {
+        while (true)
+        {
+            objectToAnimate.DOFade(minValue, animationTime);
+            await Task.Delay((int)(animationTime * ANIMATION_TIME_MODIFIER));
+            objectToAnimate.DOFade(maxValue, animationTime);
+            await Task.Delay((int)(animationTime * ANIMATION_TIME_MODIFIER));
+        }
+    }
+
+    public void KillTween(Graphic objectToAnimate)
+    {
+        DOTween.Kill(objectToAnimate);
     }
 }

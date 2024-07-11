@@ -5,36 +5,28 @@ using UnityEngine.UI;
 
 public class DoTweenFade : MonoBehaviour
 {
-    private const float FADE_TIME = 0.25f;
-    private const float FADE_MIN_VALUE = 0.2f;
-    private const float FADE_MAX_VALUE = 0.6f;
+    [SerializeField] private float _fadeTime;
+    [SerializeField] private float _fadeMinValue;
+    [SerializeField] private float _fadeMaxValue;
 
     private Image _image;
+
+    private DoTweenUIAnimation _doTweenUIAnimation;
 
     private void Awake()
     {
         _image = GetComponent<Image>();
+
+        _doTweenUIAnimation = new DoTweenUIAnimation();
     }
 
     private void OnEnable()
     {
-        StartCoroutine(Fade());
+        _doTweenUIAnimation.StartFade(_image, _fadeMinValue, _fadeMaxValue, _fadeTime);
     }
 
     private void OnDisable()
     {
-        StopAllCoroutines();
-        DOTween.Kill(_image);
-    }
-
-    private IEnumerator Fade()
-    {
-        while (true)
-        {
-            _image.DOFade(FADE_MIN_VALUE, FADE_TIME);
-            yield return new WaitForSeconds(FADE_TIME);
-            _image.DOFade(FADE_MAX_VALUE, FADE_TIME);
-            yield return new WaitForSeconds(FADE_TIME);
-        }
+        _doTweenUIAnimation.KillTween(_image);
     }
 }

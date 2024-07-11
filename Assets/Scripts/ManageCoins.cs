@@ -7,7 +7,7 @@ public class ManageCoins : MonoBehaviour
     [SerializeField] private TMP_Text _coinsDisplay;
     [SerializeField] private Button[] _upgradeButtons;
     private Coins _coins;
-    private DoTweenUIAnimation _doTweenUIAnimation;
+    private DoTweenAnimateText _animateText;
 
     public Coins Coins { get { return _coins; }  }
 
@@ -15,14 +15,14 @@ public class ManageCoins : MonoBehaviour
     {
         _coins = new Coins();
 
-        _doTweenUIAnimation = new DoTweenUIAnimation(_coinsDisplay);
+        _animateText = GetComponent<DoTweenAnimateText>();
     }
 
     public void IncreaseAmount()
     {
         _coins.AddCoins();
         _coinsDisplay.text = _coins.Amount.ToString();
-        _doTweenUIAnimation.StartAnimateText();
+        _animateText.Animate();
         CheckAvailableUpgrades();
     }
 
@@ -30,7 +30,7 @@ public class ManageCoins : MonoBehaviour
     {
         _coins.Purchase(amount);
         _coinsDisplay.text = _coins.Amount.ToString();
-        _doTweenUIAnimation.StartAnimateText();
+        _animateText.Animate();
         CheckAvailableUpgrades();
     }
 
@@ -42,10 +42,5 @@ public class ManageCoins : MonoBehaviour
 
             _upgradeButtons[i].interactable = upgradeInfo.Price <= _coins.Amount;
         }
-    }
-
-    private void OnDisable()
-    {
-        _doTweenUIAnimation.KillTween();
     }
 }
