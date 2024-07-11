@@ -306,7 +306,7 @@ MonoBehaviour:
   _fortuneButton: {fileID: 252588221}
   _manageCoins: {fileID: 718871399}
   _camera: {fileID: 519420031}
-  _activationDelay: 5
+  _activationDelay: 60
   _deactivationDelay: 2
   _incrementMultiplier: 1.75
   _multiplierDuration: 20
@@ -399,7 +399,7 @@ MonoBehaviour:
   _misfortuneButton: {fileID: 1460186847}
   _warningSign: {fileID: 2005862924}
   _manageCoins: {fileID: 718871399}
-  _activationDelay: 5
+  _activationDelay: 10
   _deactivationDelay: 2
   _warningTime: 1
   _coefficientOfCoinsLost: 1
@@ -1779,7 +1779,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebdb93fdf8f03745b246260912330a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _defaultScale: 1
   _targetScale: 0.9
+  _animationTime: 0.1
 --- !u!114 &681515197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1941,6 +1943,7 @@ GameObject:
   - component: {fileID: 718025648}
   - component: {fileID: 718025651}
   - component: {fileID: 718025652}
+  - component: {fileID: 718025653}
   m_Layer: 5
   m_Name: Coins
   m_TagString: Untagged
@@ -2036,6 +2039,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 718025653}
+        m_TargetAssemblyTypeName: ButtonClickLimit, Assembly-CSharp
+        m_MethodName: IncreaseClicksAmount
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &718025649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2103,7 +2118,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebdb93fdf8f03745b246260912330a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _defaultScale: 1
   _targetScale: 0.9
+  _animationTime: 0.1
+--- !u!114 &718025653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718025646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90a5bd4ac13b11e42a297425a2346f9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clickLimit: 125
 --- !u!1 &718871394
 GameObject:
   m_ObjectHideFlags: 0
@@ -2120,6 +2150,7 @@ GameObject:
   - component: {fileID: 718871400}
   - component: {fileID: 718871401}
   - component: {fileID: 718871402}
+  - component: {fileID: 718871403}
   m_Layer: 5
   m_Name: Clicker
   m_TagString: Untagged
@@ -2322,7 +2353,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebdb93fdf8f03745b246260912330a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _defaultScale: 1
   _targetScale: 0.9
+  _animationTime: 0.1
+--- !u!114 &718871403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718871394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46e0d93797dec2840a13ef2a6504ba4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animationTime: 0.1
+  _text: {fileID: 1331666299}
 --- !u!1 &1081891603
 GameObject:
   m_ObjectHideFlags: 0
@@ -2659,7 +2706,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebdb93fdf8f03745b246260912330a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _defaultScale: 1
   _targetScale: 0.9
+  _animationTime: 0.1
 --- !u!1 &1331666297
 GameObject:
   m_ObjectHideFlags: 0
@@ -3804,6 +3853,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c41b0015b6ddf48a31cd787c4b8ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fadeTime: 0.25
+  _fadeMinValue: 0.2
+  _fadeMaxValue: 0.6
 --- !u!1 &2028539311
 GameObject:
   m_ObjectHideFlags: 0
@@ -4215,7 +4267,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebdb93fdf8f03745b246260912330a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _defaultScale: 1
   _targetScale: 0.9
+  _animationTime: 0.1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

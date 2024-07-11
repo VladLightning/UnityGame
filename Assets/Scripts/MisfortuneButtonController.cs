@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MisfortuneButtonController : MonoBehaviour
 {
-    private const float DELAY_INCREASE = 5;
+    private const float DELAY_INCREASE = 10;
     private const float WARNING_TIME_INCREASE = 0.75f;
     private const float COEFFICIENT_DECREASE = 0.2f;
 
