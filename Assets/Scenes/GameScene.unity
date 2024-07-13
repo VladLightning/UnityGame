@@ -399,9 +399,9 @@ MonoBehaviour:
   _misfortuneButton: {fileID: 1460186847}
   _warningSign: {fileID: 2005862924}
   _manageCoins: {fileID: 718871399}
-  _activationDelay: 10
+  _activationDelay: 5
   _deactivationDelay: 2
-  _warningTime: 1
+  _warningTime: 2
   _coefficientOfCoinsLost: 1
 --- !u!1 &222176389
 GameObject:
@@ -1677,8 +1677,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 681515196}
-        m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
-        m_MethodName: OnClick
+        m_TargetAssemblyTypeName: DoTweenButtonClick, Assembly-CSharp
+        m_MethodName: Animate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1779,8 +1779,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebdb93fdf8f03745b246260912330a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultScale: 1
-  _targetScale: 0.9
+  _objectToAnimate: {fileID: 0}
+  _sizeMultiplier: 0.9
   _animationTime: 0.1
 --- !u!114 &681515197
 MonoBehaviour:
@@ -2016,8 +2016,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 718025652}
-        m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
-        m_MethodName: OnClick
+        m_TargetAssemblyTypeName: DoTweenButtonClick, Assembly-CSharp
+        m_MethodName: Animate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2118,8 +2118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebdb93fdf8f03745b246260912330a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultScale: 1
-  _targetScale: 0.9
+  _objectToAnimate: {fileID: 0}
+  _sizeMultiplier: 0.9
   _animationTime: 0.1
 --- !u!114 &718025653
 MonoBehaviour:
@@ -2223,8 +2223,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 718871402}
-        m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
-        m_MethodName: OnClick
+        m_TargetAssemblyTypeName: DoTweenButtonClick, Assembly-CSharp
+        m_MethodName: Animate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2353,8 +2353,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebdb93fdf8f03745b246260912330a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultScale: 1
-  _targetScale: 0.9
+  _objectToAnimate: {fileID: 0}
+  _sizeMultiplier: 0.9
   _animationTime: 0.1
 --- !u!114 &718871403
 MonoBehaviour:
@@ -2368,8 +2368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e0d93797dec2840a13ef2a6504ba4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _objectToAnimate: {fileID: 1331666299}
   _animationTime: 0.1
-  _text: {fileID: 1331666299}
 --- !u!1 &1081891603
 GameObject:
   m_ObjectHideFlags: 0
@@ -2517,8 +2517,8 @@ GameObject:
   - component: {fileID: 1158783146}
   - component: {fileID: 1158783145}
   - component: {fileID: 1158783148}
-  - component: {fileID: 1158783149}
   - component: {fileID: 1158783150}
+  - component: {fileID: 1158783149}
   m_Layer: 5
   m_Name: Cooldown
   m_TagString: Untagged
@@ -2591,8 +2591,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1158783150}
-        m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
-        m_MethodName: OnClick
+        m_TargetAssemblyTypeName: DoTweenButtonClick, Assembly-CSharp
+        m_MethodName: Animate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2706,8 +2706,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebdb93fdf8f03745b246260912330a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultScale: 1
-  _targetScale: 0.9
+  _objectToAnimate: {fileID: 0}
+  _sizeMultiplier: 0.9
   _animationTime: 0.1
 --- !u!1 &1331666297
 GameObject:
@@ -3853,9 +3853,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c41b0015b6ddf48a31cd787c4b8ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fadeTime: 0.25
+  _objectToAnimate: {fileID: 0}
+  _fadeTime: 0.1
   _fadeMinValue: 0.2
   _fadeMaxValue: 0.6
+  _misfortuneButtonController: {fileID: 153383519}
 --- !u!1 &2028539311
 GameObject:
   m_ObjectHideFlags: 0
@@ -4078,8 +4080,8 @@ GameObject:
   - component: {fileID: 2129131089}
   - component: {fileID: 2129131088}
   - component: {fileID: 2129131091}
-  - component: {fileID: 2129131092}
   - component: {fileID: 2129131093}
+  - component: {fileID: 2129131092}
   m_Layer: 5
   m_Name: Fortune
   m_TagString: Untagged
@@ -4152,8 +4154,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2129131093}
-        m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
-        m_MethodName: OnClick
+        m_TargetAssemblyTypeName: DoTweenButtonClick, Assembly-CSharp
+        m_MethodName: Animate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4267,8 +4269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebdb93fdf8f03745b246260912330a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultScale: 1
-  _targetScale: 0.9
+  _objectToAnimate: {fileID: 0}
+  _sizeMultiplier: 0.9
   _animationTime: 0.1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
