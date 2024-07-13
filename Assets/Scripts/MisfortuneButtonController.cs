@@ -19,6 +19,8 @@ public class MisfortuneButtonController : MonoBehaviour
 
     private IEnumerator _deactivate;
 
+    public float WarningTime { get { return _warningTime; } }
+
     private void Start()
     {
         _deactivate = DeactivateTimer();

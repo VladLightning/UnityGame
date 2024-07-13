@@ -1,30 +1,21 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DoTweenButtonClick : MonoBehaviour
+public class DoTweenButtonClick : Animations
 {
-    [SerializeField] private float _defaultScale;
-    [SerializeField] private float _targetScale;
+    [SerializeField] private float _sizeMultiplier;
     [SerializeField] private float _animationTime;
 
     private Image _buttonImage;
 
-    private DoTweenUIAnimation _doTweenUIAnimation;
-
-    private void Start()
+    protected override void Awake()
     {
         _buttonImage = GetComponent<Image>();
-
-        _doTweenUIAnimation = new DoTweenUIAnimation();
+        base.Awake();
     }
 
-    public void OnClick()
+    public override void Animate()
     {
-        _doTweenUIAnimation.StartAnimateButton(_buttonImage, _defaultScale, _targetScale, _animationTime);
-    }
-
-    private void OnDisable()
-    {
-        _doTweenUIAnimation.KillTween(_buttonImage);
+        _doTweenUIAnimation.StartAnimateButton(_buttonImage, _sizeMultiplier, _animationTime);
     }
 }

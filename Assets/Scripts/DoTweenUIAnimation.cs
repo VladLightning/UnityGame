@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,14 +7,15 @@ using UnityEngine.UI;
 public class DoTweenUIAnimation
 {
     private const int ANIMATION_TIME_MODIFIER = 1000;
+    private const int ANIMATION_TICKS_MODIFIER = 4;
 
     private bool _isAnimationPlaying;
 
-    public void StartAnimateText(Graphic objectToAnimate, Vector3 defaultPosition, float animationTime)
+    public void StartAnimateText(Graphic objectToAnimate, float animationTime)
     {       
         if (!_isAnimationPlaying)
         {
-            AnimateText(objectToAnimate, defaultPosition, animationTime);
+            AnimateText(objectToAnimate, objectToAnimate.transform.position, animationTime);
         }
     }
 
@@ -28,42 +30,47 @@ public class DoTweenUIAnimation
         _isAnimationPlaying = false;
     }
 
-    public void StartAnimateButton(Graphic objectToAnimate, float defaultScale, float targetScale, float animationTime)
+    public void StartAnimateButton(Graphic objectToAnimate, float sizeMultiplier, float animationTime)
     {
         if (!_isAnimationPlaying)
         {
-            AnimateButton(objectToAnimate, defaultScale, targetScale, animationTime);
+            AnimateButton(objectToAnimate, sizeMultiplier, animationTime);
         }
     }
 
-    private async void AnimateButton(Graphic objectToAnimate, float defaultScale, float targetScale, float animationTime)
+    private async void AnimateButton(Graphic objectToAnimate, float sizeMultiplier, float animationTime)
     {
         _isAnimationPlaying = true;
-        objectToAnimate.transform.DOScale(targetScale, animationTime);
+        objectToAnimate.transform.DOScale(objectToAnimate.transform.localScale * sizeMultiplier, animationTime);
 
         await Task.Delay((int)(animationTime * ANIMATION_TIME_MODIFIER));
 
-        objectToAnimate.transform.DOScale(defaultScale, animationTime);
+        objectToAnimate.transform.DOScale(objectToAnimate.transform.localScale / sizeMultiplier, animationTime);
         _isAnimationPlaying = false;
     }
 
-    public void StartFade(Graphic objectToAnimate, float minValue, float maxValue, float animationTime)
+    public void StartFade(Graphic objectToAnimate, float minValue, float maxValue, float animationTime, int animationTicks, MonoBehaviour monoBehaviour)
     {
-        Fade(objectToAnimate, minValue, maxValue, animationTime);
-    }
-
-    private async void Fade(Graphic objectToAnimate, float minValue, float maxValue, float animationTime)
-    {
-        while (true)
+        if(!_isAnimationPlaying)
         {
-            objectToAnimate.DOFade(minValue, animationTime);
-            await Task.Delay((int)(animationTime * ANIMATION_TIME_MODIFIER));
-            objectToAnimate.DOFade(maxValue, animationTime);
-            await Task.Delay((int)(animationTime * ANIMATION_TIME_MODIFIER));
+            monoBehaviour.StartCoroutine(Fade(objectToAnimate, minValue, maxValue, animationTime, animationTicks));
         }
     }
 
-    public void KillTween(Graphic objectToAnimate)
+    private IEnumerator Fade(Graphic objectToAnimate, float minValue, float maxValue, float animationTime, int animationTicks)
+    {
+        _isAnimationPlaying = true;
+        for (int i = 0; i < animationTicks / ANIMATION_TICKS_MODIFIER; i++)
+        {
+            objectToAnimate.DOFade(minValue, animationTime);
+            yield return new WaitForSeconds(animationTime);
+            objectToAnimate.DOFade(maxValue, animationTime);
+            yield return new WaitForSeconds(animationTime);
+        }
+        _isAnimationPlaying = false;
+    }
+
+    public void KillTween(object objectToAnimate)
     {
         DOTween.Kill(objectToAnimate);
     }

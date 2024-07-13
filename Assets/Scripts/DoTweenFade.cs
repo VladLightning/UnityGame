@@ -1,32 +1,35 @@
-using DG.Tweening;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DoTweenFade : MonoBehaviour
+public class DoTweenFade : Animations
 {
     [SerializeField] private float _fadeTime;
     [SerializeField] private float _fadeMinValue;
     [SerializeField] private float _fadeMaxValue;
 
-    private Image _image;
+    [SerializeField] private MisfortuneButtonController _misfortuneButtonController;
+    private int _animationTicks;
 
-    private DoTweenUIAnimation _doTweenUIAnimation;
-
-    private void Awake()
+    protected override void Awake()
     {
-        _image = GetComponent<Image>();
+        _objectToAnimate = GetComponent<Image>();
+        base.Awake();
+    }
 
-        _doTweenUIAnimation = new DoTweenUIAnimation();
+    public override void Animate()
+    {
+        _animationTicks = (int)(_misfortuneButtonController.WarningTime / _fadeTime);
+        _doTweenUIAnimation.StartFade(_objectToAnimate, _fadeMinValue, _fadeMaxValue, _fadeTime, _animationTicks, this);
     }
 
     private void OnEnable()
-    {
-        _doTweenUIAnimation.StartFade(_image, _fadeMinValue, _fadeMaxValue, _fadeTime);
+    {       
+        Animate();
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
-        _doTweenUIAnimation.KillTween(_image);
+        StopAllCoroutines();
+        base.OnDisable();
     }
 }
