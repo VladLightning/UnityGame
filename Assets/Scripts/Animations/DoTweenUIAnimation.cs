@@ -24,9 +24,12 @@ public class DoTweenUIAnimation
         _isAnimationPlaying = true;
         objectToAnimate.transform.DOMove(defaultPosition + Vector3.up, animationTime);
 
+        await Task.Delay((int)(animationTime * ANIMATION_TIME_MODIFIER));  
+        
+        objectToAnimate.transform.DOMove(defaultPosition, animationTime);
+
         await Task.Delay((int)(animationTime * ANIMATION_TIME_MODIFIER));
 
-        objectToAnimate.transform.DOMove(defaultPosition, animationTime);
         _isAnimationPlaying = false;
     }
 
@@ -46,6 +49,9 @@ public class DoTweenUIAnimation
         await Task.Delay((int)(animationTime * ANIMATION_TIME_MODIFIER));
 
         objectToAnimate.transform.DOScale(objectToAnimate.transform.localScale / sizeMultiplier, animationTime);
+
+        await Task.Delay((int)(animationTime * ANIMATION_TIME_MODIFIER));
+
         _isAnimationPlaying = false;
     }
 
