@@ -6,13 +6,16 @@ public class Upgrades
     private readonly ClickCooldown _clickCooldown;
     private readonly FortuneButtonController _fortuneButtonController;
     private readonly MisfortuneButtonController _misfortuneButtonController;
+    private readonly PassiveIncome _passiveIncome;
 
-    public Upgrades(Coins coins, ClickCooldown clickCooldown, FortuneButtonController fortuneButtonController, MisfortuneButtonController misfortuneButtonController)
+    public Upgrades(Coins coins, ClickCooldown clickCooldown, FortuneButtonController fortuneButtonController, 
+                    MisfortuneButtonController misfortuneButtonController, PassiveIncome passiveIncome)
     {
         _coins = coins;
         _clickCooldown = clickCooldown;
         _fortuneButtonController = fortuneButtonController;
         _misfortuneButtonController = misfortuneButtonController;
+        _passiveIncome = passiveIncome;
     }
 
     public void UpgradeCoinsIncrement()
@@ -36,5 +39,10 @@ public class Upgrades
         _misfortuneButtonController.IncreaseActivationDelay();
         _misfortuneButtonController.IncreaseWarningTime();
         _misfortuneButtonController.DecreaseCoinsLost();
+    }
+
+    public void UpgradePassiveIncome()
+    {
+        _passiveIncome.StartIncome();
     }
 }

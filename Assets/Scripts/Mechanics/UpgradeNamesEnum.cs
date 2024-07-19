@@ -8,5 +8,6 @@ public class UpgradeNamesEnum
         Cooldown = 1,
         Fortune = 2,
         Misfortune = 3,
+        PassiveIncome = 4,
     }
 }
