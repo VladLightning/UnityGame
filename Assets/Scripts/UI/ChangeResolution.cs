@@ -3,25 +3,51 @@ using UnityEngine;
 
 public class ChangeResolution : MonoBehaviour
 {
-    private readonly int[,] _resolution = 
-    { 
-        {3840,2160}, 
-        {1920,1080}, 
-        {1600,900 },
-        {1440,900 },
-        {1366,768 } 
-    };
+    [SerializeField] private Resolution[] _resolutions;
 
     [SerializeField] private TMP_Dropdown _resolutionsDropdown;
 
+    [SerializeField] private FortuneButtonController _fortuneButtonController;
+
     private void Awake()
-    {      
-        OnChangeResolution(_resolutionsDropdown.value = PlayerPrefs.GetInt("Screen resolution"));
+    {
+        SortMaxRefreshRate();
+        _resolutionsDropdown.value = PlayerPrefs.GetInt("Screen resolution");
     }
 
     public void OnChangeResolution(int index)
     {
-        Screen.SetResolution(_resolution[index, 0], _resolution[index, 1], PlayerPrefs.GetInt("Is fullscreen") == 1);
+        Screen.SetResolution(_resolutions[index].width, _resolutions[index].height, PlayerPrefs.GetInt("Is fullscreen") == 1);
         PlayerPrefs.SetInt("Screen resolution", index);
+        _fortuneButtonController.SetScreenBorders();
+    }
+
+    private void SortMaxRefreshRate()
+    {
+        int newResolutionsLength = 0;
+        for (int i = 0; i < Screen.resolutions.Length; i++)
+        {
+            if (Screen.resolutions[i].refreshRateRatio.value == Screen.currentResolution.refreshRateRatio.value)
+            {
+                newResolutionsLength++;
+            }
+        }
+
+        _resolutions = new Resolution[newResolutionsLength];
+        int index = 0;
+        _resolutionsDropdown.options.Clear();
+        for (int i = 0; i < Screen.resolutions.Length; i++)
+        {
+            if (Screen.resolutions[i].refreshRateRatio.value == Screen.currentResolution.refreshRateRatio.value)
+            {
+                _resolutions[index] = Screen.resolutions[i];
+
+                string option = $"{_resolutions[i].width}x{_resolutions[i].height}";
+
+                _resolutionsDropdown.options.Add(new TMP_Dropdown.OptionData(option));
+
+                index++;
+            }
+        }
     }
 }

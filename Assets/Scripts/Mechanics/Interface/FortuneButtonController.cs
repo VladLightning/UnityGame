@@ -27,7 +27,6 @@ public class FortuneButtonController : MonoBehaviour
     {
         _deactivate = DeactivateTimer();
         StartCoroutine(ActivateTimer());
-        SetScreenBorders();
     }
 
     public void IncreaseMultiplier()
@@ -46,7 +45,7 @@ public class FortuneButtonController : MonoBehaviour
         Deactivate();
     }
 
-    private void SetScreenBorders()
+    public void SetScreenBorders()
     {
         _borderRestrictionX = Screen.currentResolution.width * BORDER_PERCENTAGE;
         _borderRestrictionY = Screen.currentResolution.height * BORDER_PERCENTAGE;

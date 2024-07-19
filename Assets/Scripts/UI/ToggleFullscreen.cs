@@ -16,7 +16,6 @@ public class ToggleFullscreen : MonoBehaviour
     public void OnToggle()
     {
         Screen.fullScreen = _toggle.isOn;
-        _resolutionsDropdown.interactable = !_toggle.isOn;
         PlayerPrefs.SetInt("Is fullscreen", _toggle.isOn ? 1 : 0);
     }
 }
