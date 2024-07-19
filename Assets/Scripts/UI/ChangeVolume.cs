@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class ChangeVolume : MonoBehaviour
 {
-    public Slider volumeSlider;
+    [SerializeField] private Slider volumeSlider;
 
     private void Start()
     {

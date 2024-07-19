@@ -1,5 +1,7 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Components;
+using UnityEngine.Localization.Settings;
 
 public class UpgradeInfo : MonoBehaviour
 {
@@ -35,8 +37,9 @@ public class UpgradeInfo : MonoBehaviour
         _priceDisplay.text = _price.ToString();
     }
 
-    public void UpdatePriceDisplay(string text)
+    public void UpdatePriceDisplay(string key)
     {
-        _priceDisplay.text = text;
+        _priceDisplay.text = LocalizationSettings.StringDatabase.GetLocalizedString(key);
+        _priceDisplay.GetComponent<LocalizeStringEvent>().enabled = true;
     }
 }

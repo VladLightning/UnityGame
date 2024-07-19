@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: LocalizationTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: LocalizationTable
+  m_TableCollectionNameGuidString: 5df854c06f44ad04aa445cef528871bb
+  m_Entries:
+  - m_Id: 71792476160
+    m_Key: Main Menu Resume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 233399009280
+    m_Key: Main Menu Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 340936769536
+    m_Key: Main Menu Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 488463024128
+    m_Key: Settings Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 618712940544
+    m_Key: Settings Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 736069566464
+    m_Key: Settings Resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 844542656512
+    m_Key: Settings Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 971915280384
+    m_Key: Settings Fullscreen Toggle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1417568468992
+    m_Key: Game Coins Amount
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1539429777408
+    m_Key: Game Click
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1586754109440
+    m_Key: Game Upgrade Amount
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1851557298176
+    m_Key: Game Upgrade Cooldown
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186174676992
+    m_Key: Game Upgrade Fortune
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2355435814912
+    m_Key: Game Upgrade Misfortune
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2554245824512
+    m_Key: Game Upgrade Passive Income
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30189298532352
+    m_Key: Max upgrade reached
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32393996681216
+    m_Key: Game Coins Multiplier
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 1958737526883876905
+  references:
+    version: 2
+    RefIds:
+    - rid: 1958737526883876905
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1721396294774
