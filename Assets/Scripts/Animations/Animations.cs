@@ -1,20 +1,17 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Animations : MonoBehaviour
+public abstract class Animations : MonoBehaviour
 {
     [SerializeField] protected Graphic _objectToAnimate;
 
     protected DoTweenUIAnimation _doTweenUIAnimation;
 
+    public abstract void Animate();
+
     protected virtual void Awake()
     {
         _doTweenUIAnimation = new DoTweenUIAnimation();
-    }
-
-    public virtual void Animate()
-    {
-
     }
 
     protected virtual void OnDisable()
