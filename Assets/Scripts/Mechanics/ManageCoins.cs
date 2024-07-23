@@ -4,10 +4,13 @@ using UnityEngine.UI;
 
 public class ManageCoins : MonoBehaviour
 {
+    private const int COINS_LIMIT = 2000000000;
+
     [SerializeField] private TMP_Text _coinsDisplay;
     [SerializeField] private Button[] _upgradeButtons;
     private Coins _coins;
     private DoTweenAnimateText _animateText;
+    private Win _win;
 
     public Coins Coins { get { return _coins; }  }
 
@@ -16,6 +19,7 @@ public class ManageCoins : MonoBehaviour
         _coins = new Coins();
 
         _animateText = GetComponent<DoTweenAnimateText>();
+        _win = GetComponent<Win>();
     }
 
     public void IncreaseAmount()
@@ -24,6 +28,11 @@ public class ManageCoins : MonoBehaviour
         _coinsDisplay.text = _coins.Amount.ToString();
         _animateText.Animate();
         CheckAvailableUpgrades();
+
+        if( _coins.Amount >= COINS_LIMIT ) 
+        {
+            _win.WinGame();
+        }
     }
 
     public void DecreaseAmount(int amount)

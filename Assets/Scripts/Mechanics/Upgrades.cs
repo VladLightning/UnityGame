@@ -43,6 +43,6 @@ public class Upgrades
 
     public void UpgradePassiveIncome()
     {
-        _passiveIncome.StartIncome();
+        _passiveIncome.UpgradeIncome();
     }
 }

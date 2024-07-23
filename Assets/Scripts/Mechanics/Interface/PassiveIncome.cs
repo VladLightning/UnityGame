@@ -3,11 +3,31 @@ using UnityEngine;
 
 public class PassiveIncome : MonoBehaviour
 {
-    private const float INCOME_INTERVAL = 1;
+    private const float INCOME_INTERVAL_DECREASE = 0.1f;
 
     [SerializeField] private ManageCoins _manageCoins;
 
-    public void StartIncome()
+    [SerializeField] private float _incomeInterval;
+
+    private bool _incomeEnabled;
+
+    public void UpgradeIncome()
+    {
+        if (!_incomeEnabled)
+        {
+            StartIncome();
+            _incomeEnabled = true;
+            return;
+        }
+        DecreaseInterval();
+    }
+
+    private void DecreaseInterval()
+    {
+        _incomeInterval -= INCOME_INTERVAL_DECREASE;
+    }
+
+    private void StartIncome()
     {
         StartCoroutine(Income());
     }
@@ -17,7 +37,7 @@ public class PassiveIncome : MonoBehaviour
         while (true)
         {
             _manageCoins.IncreaseAmount();
-            yield return new WaitForSeconds(INCOME_INTERVAL);
+            yield return new WaitForSeconds(_incomeInterval);
         }
     }
 }
