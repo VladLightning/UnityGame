@@ -83,6 +83,14 @@ MonoBehaviour:
     m_Key: Game Coins Multiplier
     m_Metadata:
       m_Items: []
+  - m_Id: 1410304410533888
+    m_Key: End Game Restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1412031863996416
+    m_Key: Game Objective
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
