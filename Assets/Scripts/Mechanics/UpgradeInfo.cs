@@ -21,6 +21,11 @@ public class UpgradeInfo : MonoBehaviour
         UpdatePriceDisplay();
     }
 
+    private void UpdatePriceDisplay()
+    {
+        _priceDisplay.text = _price.ToString();
+    }
+
     public void BuyUpgrade()
     {
         _upgradeBuy.Buy(_price, _upgradeName, this);
@@ -30,11 +35,6 @@ public class UpgradeInfo : MonoBehaviour
     {
         _price += (int)(_price * _priceIncreaseIndex);
         UpdatePriceDisplay();
-    }
-
-    private void UpdatePriceDisplay()
-    {
-        _priceDisplay.text = _price.ToString();
     }
 
     public void UpdatePriceDisplay(string key)

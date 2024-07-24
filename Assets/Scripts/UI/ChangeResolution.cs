@@ -15,13 +15,6 @@ public class ChangeResolution : MonoBehaviour
         _resolutionsDropdown.value = PlayerPrefs.GetInt("Screen resolution");
     }
 
-    public void OnChangeResolution(int index)
-    {
-        Screen.SetResolution(_resolutions[index].width, _resolutions[index].height, PlayerPrefs.GetInt("Is fullscreen") == 1);
-        PlayerPrefs.SetInt("Screen resolution", index);
-        _fortuneButtonController.SetScreenBorders();
-    }
-
     private void SortMaxRefreshRate()
     {
         int newResolutionsLength = 0;
@@ -49,5 +42,12 @@ public class ChangeResolution : MonoBehaviour
                 index++;
             }
         }
+    }
+
+    public void OnChangeResolution(int index)
+    {
+        Screen.SetResolution(_resolutions[index].width, _resolutions[index].height, PlayerPrefs.GetInt("Is fullscreen") == 1);
+        PlayerPrefs.SetInt("Screen resolution", index);
+        _fortuneButtonController.SetScreenBorders();
     }
 }

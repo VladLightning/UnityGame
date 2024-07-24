@@ -16,12 +16,6 @@ public class DoTweenFade : Animations
         base.Awake();
     }
 
-    public override void Animate()
-    {
-        _animationTicks = (int)(_misfortuneButtonController.WarningTime / _fadeTime);
-        _doTweenUIAnimation.StartFade(_objectToAnimate, _fadeMinValue, _fadeMaxValue, _fadeTime, _animationTicks, this);
-    }
-
     private void OnEnable()
     {       
         Animate();
@@ -32,4 +26,11 @@ public class DoTweenFade : Animations
         StopAllCoroutines();
         base.OnDisable();
     }
+
+    public override void Animate()
+    {
+        _animationTicks = (int)(_misfortuneButtonController.WarningTime / _fadeTime);
+        _doTweenUIAnimation.StartFade(_objectToAnimate, _fadeMinValue, _fadeMaxValue, _fadeTime, _animationTicks, this);
+    }
+
 }

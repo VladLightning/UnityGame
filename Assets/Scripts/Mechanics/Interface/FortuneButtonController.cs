@@ -29,28 +29,6 @@ public class FortuneButtonController : MonoBehaviour
         StartCoroutine(ActivateTimer());
     }
 
-    public void IncreaseMultiplier()
-    {
-        _incrementMultiplier += INCREASE_MULTIPLIER;
-    }
-
-    public void IncreaseDuration()
-    {
-        _multiplierDuration += _multiplierDuration * INCREASE_DURATION;
-    }
-
-    public void OnClick()
-    {
-        StartCoroutine(ActivateIncrementMultiplier());
-        Deactivate();
-    }
-
-    public void SetScreenBorders()
-    {
-        _borderRestrictionX = Screen.currentResolution.width * BORDER_PERCENTAGE;
-        _borderRestrictionY = Screen.currentResolution.height * BORDER_PERCENTAGE;
-    }
-
     private void RandomizePosition()
     {
         _fortuneButton.transform.position = (Vector2)_camera.ScreenToWorldPoint(
@@ -93,5 +71,27 @@ public class FortuneButtonController : MonoBehaviour
         _manageCoins.Coins.IncrementMultiplier = _incrementMultiplier;
         yield return new WaitForSeconds(_multiplierDuration);
         _manageCoins.Coins.IncrementMultiplier = 1;
+    }
+
+    public void IncreaseMultiplier()
+    {
+        _incrementMultiplier += INCREASE_MULTIPLIER;
+    }
+
+    public void IncreaseDuration()
+    {
+        _multiplierDuration += _multiplierDuration * INCREASE_DURATION;
+    }
+
+    public void OnClick()
+    {
+        StartCoroutine(ActivateIncrementMultiplier());
+        Deactivate();
+    }
+
+    public void SetScreenBorders()
+    {
+        _borderRestrictionX = Screen.currentResolution.width * BORDER_PERCENTAGE;
+        _borderRestrictionY = Screen.currentResolution.height * BORDER_PERCENTAGE;
     }
 }

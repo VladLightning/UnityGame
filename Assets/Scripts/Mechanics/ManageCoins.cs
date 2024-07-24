@@ -22,6 +22,16 @@ public class ManageCoins : MonoBehaviour
         _win = GetComponent<Win>();
     }
 
+    private void CheckAvailableUpgrades()
+    {
+        for (int i = 0; i < _upgradeButtons.Length; i++)
+        {
+            var upgradeInfo = _upgradeButtons[i].GetComponent<UpgradeInfo>();
+
+            _upgradeButtons[i].interactable = upgradeInfo.Price <= _coins.Amount;
+        }
+    }
+
     public void IncreaseAmount()
     {
         _coins.AddCoins();
@@ -41,15 +51,5 @@ public class ManageCoins : MonoBehaviour
         _coinsDisplay.text = _coins.Amount.ToString();
         _animateText.Animate();
         CheckAvailableUpgrades();
-    }
-
-    private void CheckAvailableUpgrades()
-    {
-        for(int i = 0; i < _upgradeButtons.Length; i++)
-        {
-            var upgradeInfo = _upgradeButtons[i].GetComponent<UpgradeInfo>();
-
-            _upgradeButtons[i].interactable = upgradeInfo.Price <= _coins.Amount;
-        }
     }
 }

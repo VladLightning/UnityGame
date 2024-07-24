@@ -11,17 +11,6 @@ public class PassiveIncome : MonoBehaviour
 
     private bool _incomeEnabled;
 
-    public void UpgradeIncome()
-    {
-        if (!_incomeEnabled)
-        {
-            StartIncome();
-            _incomeEnabled = true;
-            return;
-        }
-        DecreaseInterval();
-    }
-
     private void DecreaseInterval()
     {
         _incomeInterval -= INCOME_INTERVAL_DECREASE;
@@ -39,5 +28,16 @@ public class PassiveIncome : MonoBehaviour
             _manageCoins.IncreaseAmount();
             yield return new WaitForSeconds(_incomeInterval);
         }
+    }
+
+    public void UpgradeIncome()
+    {
+        if (!_incomeEnabled)
+        {
+            StartIncome();
+            _incomeEnabled = true;
+            return;
+        }
+        DecreaseInterval();
     }
 }

@@ -27,32 +27,6 @@ public class MisfortuneButtonController : MonoBehaviour
         StartCoroutine(ActivateTimer());
     }
 
-    public void IncreaseActivationDelay()
-    {
-        _activationDelay += DELAY_INCREASE;
-    }
-
-    public void IncreaseWarningTime()
-    {
-        _warningTime += WARNING_TIME_INCREASE;
-    }
-
-    public void DecreaseCoinsLost()
-    {
-        _coefficientOfCoinsLost -= COEFFICIENT_DECREASE;
-        if(_coefficientOfCoinsLost < 0.2f)
-        {
-            StopAllCoroutines();
-            Destroy(gameObject);
-        }
-    }
-
-    public void OnClick()
-    {
-        LoseCoins();
-        Deactivate();
-    }
-
     private void Activate()
     {
         _misfortuneButton.SetActive(true);
@@ -93,5 +67,31 @@ public class MisfortuneButtonController : MonoBehaviour
     private void LoseCoins()
     {
         _manageCoins.DecreaseAmount((int)(_manageCoins.Coins.Amount * _coefficientOfCoinsLost));
+    }
+
+    public void IncreaseActivationDelay()
+    {
+        _activationDelay += DELAY_INCREASE;
+    }
+
+    public void IncreaseWarningTime()
+    {
+        _warningTime += WARNING_TIME_INCREASE;
+    }
+
+    public void DecreaseCoinsLost()
+    {
+        _coefficientOfCoinsLost -= COEFFICIENT_DECREASE;
+        if (_coefficientOfCoinsLost < 0.2f)
+        {
+            StopAllCoroutines();
+            Destroy(gameObject);
+        }
+    }
+
+    public void OnClick()
+    {
+        LoseCoins();
+        Deactivate();
     }
 }
